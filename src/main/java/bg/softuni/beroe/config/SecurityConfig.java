@@ -1,6 +1,7 @@
 package bg.softuni.beroe.config;
 
 import bg.softuni.beroe.repository.UserRepository;
+
 import bg.softuni.beroe.service.impl.MobileleUserDetailsService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +24,7 @@ public class SecurityConfig {
                     // all static resources to "common locations" (css, images, js) are available to anyone
                     .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                     // some more resources for all users
-                    .requestMatchers("/", "/users/login","/users/login-error", "/users/register", "/error", "/offers/all", "/offers/{id}", "/api/convert","offers/add", "/users/beroe", "/error").permitAll()
+                    .requestMatchers("/", "/users/login","/users/login-error", "/users/register", "/error", "/offers/all", "/offers/{id}", "/api/convert","offers/add", "/users/beroe", "/error", "/users/profile").permitAll()
                     // all other URL-s should be authenticated.
                     .anyRequest()
                     .authenticated()

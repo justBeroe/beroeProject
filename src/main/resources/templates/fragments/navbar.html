@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="UTF-8">
-  <title>MobiLeLeLe</title>
+  <title>BEROE PROJECT</title>
   <link rel="stylesheet" href="/css/reset-css.css"/>
   <link rel="stylesheet" href="/css/bootstrap.min.css"/>
   <link rel="stylesheet" type="text/css" href="/css/main.css"/>
@@ -16,7 +16,7 @@
 <div th:fragment="navbar(activeLink)">
 
   <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
-    <a class="navbar-brand" href="/"><img alt="car picture" src="/images/car.png" class="logo"></a>
+    <a class="navbar-brand" href="/"><img alt="car picture" src="/images/beroeLogo.png" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -41,9 +41,10 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/">Action</a>
-            <a class="dropdown-item" href="/">Another action</a>
+<!--            <a class="dropdown-item" href="/">Another action</a>-->
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/">Something else here</a>
+            <a class="dropdown-item" href="/users/profile"
+               th:classappend="${activeLink == 'profile'}? 'active'">Profile</a>
           </div>
         </li>
         <li class="nav-item" sec:authorize="isAuthenticated()">
@@ -52,9 +53,13 @@
                  text="Welcome, Gosho"></div>
             <form th:method="post"
                   th:action="@{/users/logout}">
-              <input class="btn btn-link" type="submit" value="Logout"/>
+              <input class="btn btn-link" type="submit" value="Logout" style="color: white;"/>
             </form>
           </div>
+        </li>
+        <li class="nav-item" sec:authorize="isAuthenticated()">
+          <a class="nav-link" href="/users/profile"
+             th:classappend="${activeLink == 'profile'}? 'active'">Profile</a>
         </li>
 
         <li class="nav-item" sec:authorize="!isAuthenticated()">
@@ -66,7 +71,7 @@
              th:classappend="${activeLink == 'login'}? 'active'">
             Login
           </a>
-        </li>
+        </li>P
 
       </ul>
     </div>

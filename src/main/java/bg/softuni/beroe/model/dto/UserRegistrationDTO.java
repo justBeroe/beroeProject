@@ -1,6 +1,5 @@
 package bg.softuni.beroe.model.dto;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
@@ -14,8 +13,8 @@ public class UserRegistrationDTO {
   @NotEmpty
   private String password;
   @NotEmpty
-  @Email
-  private String email;
+  //@Email
+  private String username;
   public String getFirstName() {
     return firstName;
   }
@@ -43,12 +42,12 @@ public class UserRegistrationDTO {
     return this;
   }
 
-  public String getEmail() {
-    return email;
+  public String getUsername() {
+    return username;
   }
 
-  public UserRegistrationDTO setEmail(String email) {
-    this.email = email;
+  public UserRegistrationDTO setUsername(String username) {
+    this.username = username;
     return this;
   }
 
@@ -58,7 +57,7 @@ public class UserRegistrationDTO {
         "firstName='" + firstName + '\'' +
         ", lastName='" + lastName + '\'' +
         ", password='" + (password == null ? "N/A" : "[PROVIDED]") + '\'' +
-        ", email='" + email + '\'' +
+        ", username='" + username + '\'' +
         '}';
   }
 }
