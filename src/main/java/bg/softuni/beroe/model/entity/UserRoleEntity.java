@@ -20,7 +20,7 @@ public class UserRoleEntity  {
   private Long id;
 
   @NotNull
-  @Column(unique = true)
+ @Column(unique = true)
   @Enumerated(EnumType.STRING)
   private UserRoleEnum role;
 

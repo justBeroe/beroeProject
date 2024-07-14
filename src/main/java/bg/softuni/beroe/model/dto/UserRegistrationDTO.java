@@ -1,7 +1,12 @@
 package bg.softuni.beroe.model.dto;
 
+import bg.softuni.beroe.model.entity.UserRoleEntity;
+import bg.softuni.beroe.model.enums.UserRoleEnum;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserRegistrationDTO {
   @NotEmpty
@@ -15,6 +20,34 @@ public class UserRegistrationDTO {
   @NotEmpty
   //@Email
   private String username;
+
+//  private List<UserRoleEntity> roles;
+//
+//  public List<UserRoleEntity> getRoles() {
+//    return roles;
+//  }
+//
+//  public UserRegistrationDTO setRoles(List<UserRoleEntity> roles) {
+//    this.roles = roles;
+//    return this;
+//  }
+
+
+/// Enum test ///
+
+  private UserRoleEnum role;
+
+  public UserRoleEnum getRole() {
+    return role;
+  }
+
+  public UserRegistrationDTO setRole(UserRoleEnum role) {
+    this.role = role;
+    return this;
+  }
+////
+
+
   public String getFirstName() {
     return firstName;
   }
