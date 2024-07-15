@@ -54,7 +54,7 @@ public class OfferController {
 
 
     offerService.createOffer(addOfferDTO);
-    offerService.createOffer1(addOfferDTO);
+    //offerService.createOffer1(addOfferDTO);
 
     return "redirect:/offers/all";
   }

@@ -22,4 +22,9 @@ public class RestConfig {
         .build();
   }
 
+  @Bean("weatherRestClient")
+  public RestClient weatherRestClient() {
+    return RestClient.create();
+  }
+
 }
