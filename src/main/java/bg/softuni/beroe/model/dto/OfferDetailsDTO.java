@@ -1,13 +1,13 @@
 package bg.softuni.beroe.model.dto;
 
-import bg.softuni.beroe.model.enums.EngineTypeEnum;
+import bg.softuni.beroe.model.enums.FanSizeEnum;
 import java.util.List;
 
 public record OfferDetailsDTO(Long id,
                               String description,
-                              Integer mileage,
+                              String item,
                               Integer price,
-                              EngineTypeEnum engineType,
+                              FanSizeEnum fanSize,
                               String imageUrl,
                               List<String> allCurrencies) {
 

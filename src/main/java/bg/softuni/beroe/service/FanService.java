@@ -5,7 +5,7 @@ import bg.softuni.beroe.model.dto.OfferDetailsDTO;
 import bg.softuni.beroe.model.dto.OfferSummaryDTO;
 import java.util.List;
 
-public interface OfferService {
+public interface FanService {
 
   //void createOffer(AddOfferDTO addOfferDTO);
   long createOffer(AddOfferDTO addOfferDTO);
@@ -18,4 +18,6 @@ public interface OfferService {
   OfferDetailsDTO getOfferDetails1(Long id);
 
   List<OfferSummaryDTO> getAllOffersSummary();
+
+  List<OfferSummaryDTO> searchOffersByID(Long id);
 }

@@ -25,6 +25,7 @@ public class UserController {
         modelAndView.addObject("profileData", userService.getProfileData());
         modelAndView.addObject("profileDataCityOnly", weatherService.fetchCity().getCity());
 
+
         return modelAndView;
     }
 }

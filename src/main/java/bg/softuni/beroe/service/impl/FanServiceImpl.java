@@ -3,10 +3,10 @@ package bg.softuni.beroe.service.impl;
 import bg.softuni.beroe.model.dto.AddOfferDTO;
 import bg.softuni.beroe.model.dto.OfferDetailsDTO;
 import bg.softuni.beroe.model.dto.OfferSummaryDTO;
-import bg.softuni.beroe.model.entity.OfferEntity;
-import bg.softuni.beroe.repository.OfferRepository;
+import bg.softuni.beroe.model.entity.FanEntity;
+import bg.softuni.beroe.repository.FanRepository;
 import bg.softuni.beroe.service.ExRateService;
-import bg.softuni.beroe.service.OfferService;
+import bg.softuni.beroe.service.FanService;
 import bg.softuni.beroe.service.exception.NoSuchElementException;
 
 import java.util.List;
@@ -19,20 +19,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
 @Service
-public class OfferServiceImpl implements OfferService {
+public class FanServiceImpl implements FanService {
 
-  private Logger LOGGER = LoggerFactory.getLogger(OfferServiceImpl.class);
+  private Logger LOGGER = LoggerFactory.getLogger(FanServiceImpl.class);
   private final RestClient offerRestClient;
-  private final OfferRepository offerRepository;
+  private final FanRepository fanRepository;
   private final ExRateService exRateService;
 
-  public OfferServiceImpl(
+  public FanServiceImpl(
       @Qualifier("offersRestClient") RestClient offerRestClient,
-      OfferRepository offerRepository,
+      FanRepository fanRepository,
 
       ExRateService exRateService) {
     this.offerRestClient = offerRestClient;
-    this.offerRepository = offerRepository;
+    this.fanRepository = fanRepository;
     this.exRateService = exRateService;
   }
 
@@ -51,12 +51,12 @@ public class OfferServiceImpl implements OfferService {
 
   @Override
   public long createOffer(AddOfferDTO addOfferDTO) {
-    return offerRepository.save(map(addOfferDTO)).getId();
+    return fanRepository.save(map(addOfferDTO)).getId();
   }
 
   @Override
   public void deleteOffer(long offerId) {
-    offerRepository.deleteById(offerId);
+    fanRepository.deleteById(offerId);
   }
 
   @Override
@@ -73,7 +73,7 @@ public class OfferServiceImpl implements OfferService {
   @Override
   public OfferDetailsDTO getOfferDetails(Long id) {
 
-    return this.offerRepository
+    return this.fanRepository
             .findById(id)
             .map(this::toOfferDetails)
             // offerEntity -> toOfferDetails(offerEntity
@@ -84,14 +84,14 @@ public class OfferServiceImpl implements OfferService {
     // and trigger a view
   }
 
-  private OfferDetailsDTO toOfferDetails(OfferEntity offerEntity) {
+  private OfferDetailsDTO toOfferDetails(FanEntity fanEntity) {
     // todo use mapping library
-    return new OfferDetailsDTO(offerEntity.getId(),
-            offerEntity.getDescription(),
-            offerEntity.getMileage(),
-            offerEntity.getPrice(),
-            offerEntity.getEngine(),
-            offerEntity.getImageUrl(),
+    return new OfferDetailsDTO(fanEntity.getId(),
+            fanEntity.getDescription(),
+            fanEntity.getItem(),
+            fanEntity.getPrice(),
+            fanEntity.getFanSize(),
+            fanEntity.getImageUrl(),
             exRateService.allSupportedCurrencies()
     );
   }
@@ -114,30 +114,40 @@ public class OfferServiceImpl implements OfferService {
 
   @Override
   public List<OfferSummaryDTO> getAllOffersSummary() {
-    return offerRepository
+    return fanRepository
             .findAll()
             .stream()
-            .map(OfferServiceImpl::toOfferSummary)
+            .map(FanServiceImpl::toOfferSummary)
             .toList();
   }
 
-  private static OfferSummaryDTO toOfferSummary(OfferEntity offerEntity) {
+  @Override
+  public List<OfferSummaryDTO> searchOffersByID(Long id) {
+    return fanRepository
+            .findById(id)
+            .stream()
+            .map(FanServiceImpl::toOfferSummary)
+            .toList();
+  }
+
+  private static OfferSummaryDTO toOfferSummary(FanEntity fanEntity) {
     // todo use mapping library
-    return new OfferSummaryDTO(offerEntity.getId(),
-            offerEntity.getDescription(),
-            offerEntity.getMileage(),
-            offerEntity.getEngine(),
-            offerEntity.getImageUrl());
+    return new OfferSummaryDTO(fanEntity.getId(),
+            fanEntity.getDescription(),
+            fanEntity.getItem(),
+            fanEntity.getFanSize(),
+            fanEntity.getImageUrl(),
+            fanEntity.getPrice());
   }
 
 
 
-  private static OfferEntity map(AddOfferDTO addOfferDTO) {
+  private static FanEntity map(AddOfferDTO addOfferDTO) {
     // todo - use mapped (e.g. ModelMapper)
-    return new OfferEntity()
+    return new FanEntity()
             .setDescription(addOfferDTO.description())
-            .setEngine(addOfferDTO.engineType())
-            .setMileage(addOfferDTO.mileage())
+            .setFanSize(addOfferDTO.fanSizeEnum())
+            .setItem(addOfferDTO.item())
             .setPrice(addOfferDTO.price())
             .setImageUrl(addOfferDTO.imageUrl());
   }

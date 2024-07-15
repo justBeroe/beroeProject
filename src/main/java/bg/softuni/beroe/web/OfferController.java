@@ -1,8 +1,8 @@
 package bg.softuni.beroe.web;
 
 import bg.softuni.beroe.model.dto.AddOfferDTO;
-import bg.softuni.beroe.model.enums.EngineTypeEnum;
-import bg.softuni.beroe.service.OfferService;
+import bg.softuni.beroe.model.enums.FanSizeEnum;
+import bg.softuni.beroe.service.FanService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,15 +19,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/offers")
 public class OfferController {
 
-  private final OfferService offerService;
+  private final FanService fanService;
 
-  public OfferController(OfferService offerService) {
-    this.offerService = offerService;
+  public OfferController(FanService fanService) {
+    this.fanService = fanService;
   }
 
   @ModelAttribute("allEngineTypes")
-  public EngineTypeEnum[] allEngineTypes() {
-    return EngineTypeEnum.values();
+  public FanSizeEnum[] allEngineTypes() {
+    return FanSizeEnum.values();
   }
 
   @GetMapping("/add")
@@ -52,8 +52,8 @@ public class OfferController {
       return "redirect:/offers/add";
     }
 
-
-    offerService.createOffer(addOfferDTO);
+    System.out.println("AddOfferDTO" + addOfferDTO);
+    fanService.createOffer(addOfferDTO);
     //offerService.createOffer1(addOfferDTO);
 
     return "redirect:/offers/all";
@@ -63,7 +63,7 @@ public class OfferController {
   public String offerDetails(@PathVariable("id") Long id,
       Model model) {
 
-    model.addAttribute("offerDetails", offerService.getOfferDetails(id));
+    model.addAttribute("offerDetails", fanService.getOfferDetails(id));
 
     return "details";
   }
@@ -81,7 +81,7 @@ public class OfferController {
   @DeleteMapping("/{id}")
   public String deleteOffer(@PathVariable("id") Long id) {
 
-    offerService.deleteOffer(id);
+    fanService.deleteOffer(id);
 
     return "redirect:/offers/all";
   }

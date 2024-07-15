@@ -1,6 +1,6 @@
 package bg.softuni.beroe.model.entity;
 
-import bg.softuni.beroe.model.enums.EngineTypeEnum;
+import bg.softuni.beroe.model.enums.FanSizeEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -9,19 +9,22 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
 
 @Entity
-@Table(name = "offers")
-public class OfferEntity extends BaseEntity {
+@Table(name = "fans")
+public class FanEntity extends BaseEntity {
 
   @NotEmpty
   private String description;
 
-  @Positive
-  private Integer mileage;
+
+  private String item;
 
   @Positive
   private int price;
 
   private String imageUrl;
+
+  @Enumerated(EnumType.STRING)
+  private FanSizeEnum fanSize;
 
 
 
@@ -30,22 +33,19 @@ public class OfferEntity extends BaseEntity {
     return imageUrl;
   }
 
-  public OfferEntity setImageUrl(String imageUrl) {
+  public FanEntity setImageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
     return this;
   }
 
-  @Enumerated(EnumType.STRING)
-  private EngineTypeEnum engine;
 
-  public Integer getMileage() {
-    return mileage;
+
+  public String getItem() {
+    return item;
   }
 
-
-
-  public OfferEntity setMileage(Integer mileage) {
-    this.mileage = mileage;
+  public FanEntity setItem(String item) {
+    this.item = item;
     return this;
   }
 
@@ -53,17 +53,17 @@ public class OfferEntity extends BaseEntity {
     return description;
   }
 
-  public OfferEntity setDescription(String description) {
+  public FanEntity setDescription(String description) {
     this.description = description;
     return this;
   }
 
-  public EngineTypeEnum getEngine() {
-    return engine;
+  public FanSizeEnum getFanSize() {
+    return fanSize;
   }
 
-  public OfferEntity setEngine(EngineTypeEnum engine) {
-    this.engine = engine;
+  public FanEntity setFanSize(FanSizeEnum fanSize) {
+    this.fanSize = fanSize;
     return this;
   }
 
@@ -71,7 +71,7 @@ public class OfferEntity extends BaseEntity {
     return price;
   }
 
-  public OfferEntity setPrice(int price) {
+  public FanEntity setPrice(int price) {
     this.price = price;
     return this;
   }

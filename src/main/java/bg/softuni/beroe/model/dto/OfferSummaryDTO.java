@@ -1,11 +1,12 @@
 package bg.softuni.beroe.model.dto;
 
-import bg.softuni.beroe.model.enums.EngineTypeEnum;
+import bg.softuni.beroe.model.enums.FanSizeEnum;
 
 public record OfferSummaryDTO(Long id,
                               String description,
-                              Integer mileage,
-                              EngineTypeEnum engineType,
-                              String imageUrl) {
+                              String item,
+                              FanSizeEnum fanSize,
+                              String imageUrl,
+                              int price) {
 
 }

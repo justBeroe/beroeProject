@@ -1,6 +1,6 @@
 package bg.softuni.beroe.model.dto;
 
-import bg.softuni.beroe.model.enums.EngineTypeEnum;
+import bg.softuni.beroe.model.enums.FanSizeEnum;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -11,10 +11,10 @@ public record AddOfferDTO(
     @Size(message = "Description should be between 5 and 500 symbols.",
         min = 1,
         max = 500) String description,//not necessarily from message source
-    @NotNull @PositiveOrZero Integer mileage,
+    String item,
     @NotNull @PositiveOrZero Integer price,
 
-    @NotNull EngineTypeEnum engineType,
+    @NotNull FanSizeEnum fanSizeEnum,
     @NotNull String imageUrl
 
 ) {
