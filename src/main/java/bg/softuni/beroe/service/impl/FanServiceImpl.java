@@ -1,8 +1,8 @@
 package bg.softuni.beroe.service.impl;
 
 import bg.softuni.beroe.model.dto.AddOfferDTO;
-import bg.softuni.beroe.model.dto.OfferDetailsDTO;
-import bg.softuni.beroe.model.dto.OfferSummaryDTO;
+import bg.softuni.beroe.model.dto.FanDetailsDTO;
+import bg.softuni.beroe.model.dto.FanSummaryDTO;
 import bg.softuni.beroe.model.entity.FanEntity;
 import bg.softuni.beroe.model.entity.UserEntity;
 import bg.softuni.beroe.repository.FanRepository;
@@ -70,18 +70,18 @@ public class FanServiceImpl implements FanService {
     }
 
     @Override
-    public OfferDetailsDTO getOfferDetails1(Long id) {
+    public FanDetailsDTO getOfferDetails1(Long id) {
 
         return offerRestClient
                 .get()
                 .uri("http://localhost:8082/offers/{id}", id)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .body(OfferDetailsDTO.class);
+                .body(FanDetailsDTO.class);
     }
 
     @Override
-    public OfferDetailsDTO getOfferDetails(Long id) {
+    public FanDetailsDTO getOfferDetails(Long id) {
 
         return this.fanRepository
                 .findById(id)
@@ -94,9 +94,9 @@ public class FanServiceImpl implements FanService {
         // and trigger a view
     }
 
-    private OfferDetailsDTO toOfferDetails(FanEntity fanEntity) {
+    private FanDetailsDTO toOfferDetails(FanEntity fanEntity) {
         // todo use mapping library
-        return new OfferDetailsDTO(fanEntity.getId(),
+        return new FanDetailsDTO(fanEntity.getId(),
                 fanEntity.getDescription(),
                 fanEntity.getItem(),
                 fanEntity.getPrice(),
@@ -123,7 +123,7 @@ public class FanServiceImpl implements FanService {
 //  }
 
     @Override
-    public List<OfferSummaryDTO> getAllOffersSummary() {
+    public List<FanSummaryDTO> getAllOffersSummary() {
         return fanRepository
                 .findAll()
                 .stream()
@@ -133,11 +133,11 @@ public class FanServiceImpl implements FanService {
     }
 
     @Override
-    public List<OfferSummaryDTO> getOnlyUserOffersSummary() {
+    public List<FanSummaryDTO> getOnlyUserOffersSummary() {
 
         String currentUsername = userHelperService.getUser().getUsername();
 
-        List<OfferSummaryDTO> list = fanRepository
+        List<FanSummaryDTO> list = fanRepository
                 .findByUserUsername(currentUsername)
                 .stream()
                 .map(FanServiceImpl::toOfferSummary)
@@ -155,7 +155,7 @@ public class FanServiceImpl implements FanService {
     }
 
     @Override
-    public List<OfferSummaryDTO> searchOffersByID(Long id) {
+    public List<FanSummaryDTO> searchOffersByID(Long id) {
         return fanRepository
                 .findById(id)
                 .stream()
@@ -163,9 +163,14 @@ public class FanServiceImpl implements FanService {
                 .toList();
     }
 
-    private static OfferSummaryDTO toOfferSummary(FanEntity fanEntity) {
+    @Override
+    public void updateFanPrice(Long id, Integer price) {
+        fanRepository.updatePriceById(id, price);
+    }
+
+    private static FanSummaryDTO toOfferSummary(FanEntity fanEntity) {
         // todo use mapping library
-        return new OfferSummaryDTO(fanEntity.getId(),
+        return new FanSummaryDTO(fanEntity.getId(),
                 fanEntity.getDescription(),
                 fanEntity.getItem(),
                 fanEntity.getFanSize(),

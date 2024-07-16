@@ -1,11 +1,10 @@
 package bg.softuni.beroe.web;
 
-import bg.softuni.beroe.model.dto.OfferSummaryDTO;
+import bg.softuni.beroe.model.dto.FanSummaryDTO;
 import bg.softuni.beroe.model.dto.SearchFanItemsByIdDTO;
 import bg.softuni.beroe.model.dto.UserProfileDto;
 import bg.softuni.beroe.model.entity.UserEntity;
 import bg.softuni.beroe.model.entity.UserRoleEntity;
-import bg.softuni.beroe.model.enums.UserRoleEnum;
 import bg.softuni.beroe.service.FanService;
 import bg.softuni.beroe.service.UserHelperService;
 import bg.softuni.beroe.service.UserService;
@@ -40,13 +39,13 @@ public class OffersController {
     UserEntity user = userHelperService.getUser();
     UserRoleEntity first = user.getRoles().getLast();
     String userRole = first.getRole().toString();
-    System.out.println(userRole);
+  //  System.out.println(userRole);
     if (userRole.equals("ADMIN")) {
 
-      List<OfferSummaryDTO> allOffersSummary = fanService.getAllOffersSummary();
+      List<FanSummaryDTO> allOffersSummary = fanService.getAllOffersSummary();
       model.addAttribute("allOffers", fanService.getAllOffersSummary());
     } else {
-      List<OfferSummaryDTO> onlyUserOffersSummary = fanService.getOnlyUserOffersSummary();
+      List<FanSummaryDTO> onlyUserOffersSummary = fanService.getOnlyUserOffersSummary();
       model.addAttribute("allOffers", fanService.getOnlyUserOffersSummary());
     }
 
@@ -66,7 +65,7 @@ public class OffersController {
       model.addAttribute("allOffers", fanService.getAllOffersSummary());
 
     } else {
-      List<OfferSummaryDTO> searchResults = fanService.searchOffersByID(id);
+      List<FanSummaryDTO> searchResults = fanService.searchOffersByID(id);
       System.out.println(searchResults);
       model.addAttribute("allOffers", searchResults);
     }

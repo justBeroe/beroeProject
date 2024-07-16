@@ -1,8 +1,8 @@
 package bg.softuni.beroe.service;
 
 import bg.softuni.beroe.model.dto.AddOfferDTO;
-import bg.softuni.beroe.model.dto.OfferDetailsDTO;
-import bg.softuni.beroe.model.dto.OfferSummaryDTO;
+import bg.softuni.beroe.model.dto.FanDetailsDTO;
+import bg.softuni.beroe.model.dto.FanSummaryDTO;
 import java.util.List;
 
 public interface FanService {
@@ -14,11 +14,13 @@ public interface FanService {
 
   void deleteOffer(long offerId);
 
-  OfferDetailsDTO getOfferDetails(Long id);
-  OfferDetailsDTO getOfferDetails1(Long id);
+  FanDetailsDTO getOfferDetails(Long id);
+  FanDetailsDTO getOfferDetails1(Long id);
 
-  List<OfferSummaryDTO> getAllOffersSummary();
-  List<OfferSummaryDTO> getOnlyUserOffersSummary();
+  List<FanSummaryDTO> getAllOffersSummary();
+  List<FanSummaryDTO> getOnlyUserOffersSummary();
 
-  List<OfferSummaryDTO> searchOffersByID(Long id);
+  List<FanSummaryDTO> searchOffersByID(Long id);
+
+  void updateFanPrice(Long id, Integer price);
 }
