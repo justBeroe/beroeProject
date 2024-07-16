@@ -3,6 +3,7 @@ package bg.softuni.beroe.web;
 import bg.softuni.beroe.model.dto.AddOfferDTO;
 import bg.softuni.beroe.model.enums.FanSizeEnum;
 import bg.softuni.beroe.service.FanService;
+import bg.softuni.beroe.service.UserHelperService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +22,10 @@ public class OfferController {
 
   private final FanService fanService;
 
-  public OfferController(FanService fanService) {
+
+  public OfferController(FanService fanService, UserHelperService userHelperService) {
     this.fanService = fanService;
+
   }
 
   @ModelAttribute("allEngineTypes")
@@ -42,7 +45,8 @@ public class OfferController {
 
   @PostMapping("add")
   public String createOffer(
-      @Valid AddOfferDTO addOfferDTO,
+     AddOfferDTO addOfferDTO,
+     // @Valid AddOfferDTO addOfferDTO,
       BindingResult bindingResult,
       RedirectAttributes rAtt) {
 
@@ -54,6 +58,7 @@ public class OfferController {
 
     System.out.println("AddOfferDTO" + addOfferDTO);
     fanService.createOffer(addOfferDTO);
+
     //offerService.createOffer1(addOfferDTO);
 
     return "redirect:/offers/all";

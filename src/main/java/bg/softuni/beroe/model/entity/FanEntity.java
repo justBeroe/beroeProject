@@ -1,10 +1,7 @@
 package bg.softuni.beroe.model.entity;
 
 import bg.softuni.beroe.model.enums.FanSizeEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
 
@@ -26,8 +23,18 @@ public class FanEntity extends BaseEntity {
   @Enumerated(EnumType.STRING)
   private FanSizeEnum fanSize;
 
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "user_id", nullable = false)
+  private UserEntity user;
 
+  public UserEntity getUser() {
+    return user;
+  }
 
+  public FanEntity setUser(UserEntity user) {
+    this.user = user;
+    return this;
+  }
 
   public String getImageUrl() {
     return imageUrl;

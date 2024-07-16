@@ -7,6 +7,7 @@ public record OfferSummaryDTO(Long id,
                               String item,
                               FanSizeEnum fanSize,
                               String imageUrl,
+                              String username,
                               int price) {
 
 }

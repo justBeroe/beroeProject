@@ -1,6 +1,6 @@
 spring:
   application:
-    name: mobilele
+    name: beroeProject
 #  thymeleaf:
 #    check-template-location: true
 #    cache: false

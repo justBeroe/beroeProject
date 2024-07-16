@@ -18,7 +18,8 @@ import java.util.concurrent.ScheduledFuture;
 public class SchedulerConfig implements SchedulingConfigurer {
 
     private final Logger LOGGER = LoggerFactory.getLogger(SchedulerConfig.class);
-    private String cronExpression = "*/10 * * * * *"; // Default cron expression
+    //private String cronExpression = "*/10 * * * * *"; // Default cron expression
+    private String cronExpression = "0 0 * * * *"; // Default cron expression
     private ScheduledFuture<?> scheduledFuture;
     private ThreadPoolTaskScheduler taskScheduler;
 

@@ -18,6 +18,7 @@ public interface FanService {
   OfferDetailsDTO getOfferDetails1(Long id);
 
   List<OfferSummaryDTO> getAllOffersSummary();
+  List<OfferSummaryDTO> getOnlyUserOffersSummary();
 
   List<OfferSummaryDTO> searchOffersByID(Long id);
 }

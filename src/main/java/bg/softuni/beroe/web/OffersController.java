@@ -2,7 +2,13 @@ package bg.softuni.beroe.web;
 
 import bg.softuni.beroe.model.dto.OfferSummaryDTO;
 import bg.softuni.beroe.model.dto.SearchFanItemsByIdDTO;
+import bg.softuni.beroe.model.dto.UserProfileDto;
+import bg.softuni.beroe.model.entity.UserEntity;
+import bg.softuni.beroe.model.entity.UserRoleEntity;
+import bg.softuni.beroe.model.enums.UserRoleEnum;
 import bg.softuni.beroe.service.FanService;
+import bg.softuni.beroe.service.UserHelperService;
+import bg.softuni.beroe.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,18 +23,32 @@ import java.util.List;
 public class OffersController {
 
   private final FanService fanService;
+  private final UserHelperService userHelperService;
+  private final UserService userService;
 
-  public OffersController(FanService fanService) {
+  public OffersController(FanService fanService, UserHelperService userHelperService, UserService userService) {
 
       this.fanService = fanService;
+      this.userHelperService = userHelperService;
+      this.userService = userService;
   }
 
   @GetMapping("/all")
   public String getAllOffers(Model model) {
+    String currentUsername = userHelperService.getUser().getUsername();
+    UserProfileDto profileData = userService.getProfileData();
+    UserEntity user = userHelperService.getUser();
+    UserRoleEntity first = user.getRoles().getLast();
+    String userRole = first.getRole().toString();
+    System.out.println(userRole);
+    if (userRole.equals("ADMIN")) {
 
-    List<OfferSummaryDTO> allOffersSummary = fanService.getAllOffersSummary();
-
-    model.addAttribute("allOffers", fanService.getAllOffersSummary());
+      List<OfferSummaryDTO> allOffersSummary = fanService.getAllOffersSummary();
+      model.addAttribute("allOffers", fanService.getAllOffersSummary());
+    } else {
+      List<OfferSummaryDTO> onlyUserOffersSummary = fanService.getOnlyUserOffersSummary();
+      model.addAttribute("allOffers", fanService.getOnlyUserOffersSummary());
+    }
 
     return "offers";
   }

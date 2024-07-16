@@ -3,7 +3,9 @@ package bg.softuni.beroe.model.entity;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -28,6 +30,19 @@ public class UserEntity extends BaseEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private List<UserRoleEntity> roles = new ArrayList<>();
+
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<FanEntity> fanItems = new HashSet<>();
+
+    public Set<FanEntity> getFanItems() {
+        return fanItems;
+    }
+
+    public UserEntity setFanItems(Set<FanEntity> fanItems) {
+        this.fanItems = fanItems;
+        return this;
+    }
 
     public String getUsername() {
         return username;
