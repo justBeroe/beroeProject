@@ -23,4 +23,6 @@ public interface FanService {
   List<FanSummaryDTO> searchOffersByID(Long id);
 
   void updateFanPrice(Long id, Integer price);
+
+  void updateAllFanPrices();
 }

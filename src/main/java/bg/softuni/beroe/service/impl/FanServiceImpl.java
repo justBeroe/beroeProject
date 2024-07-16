@@ -168,6 +168,16 @@ public class FanServiceImpl implements FanService {
         fanRepository.updatePriceById(id, price);
     }
 
+    @Override
+    public void updateAllFanPrices() {
+        List<FanEntity> fans = fanRepository.findAll();
+        for (FanEntity fan : fans) {
+            Integer newPrice = fan.getPrice() + 1; // Increase price by 1
+            fan.setPrice(newPrice);
+        }
+        fanRepository.saveAll(fans); // Save all updated fan entities
+    }
+
     private static FanSummaryDTO toOfferSummary(FanEntity fanEntity) {
         // todo use mapping library
         return new FanSummaryDTO(fanEntity.getId(),
