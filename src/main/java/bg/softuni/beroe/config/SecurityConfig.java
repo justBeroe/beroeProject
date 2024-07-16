@@ -26,7 +26,7 @@ public class SecurityConfig {
                                         // some more resources for all users
                                         .requestMatchers("/", "/users/login", "/users/login-error", "/users/register", "/error", "/offers/all",
                                                 "/offers/{id}", "/api/convert", "offers/add", "/users/beroe", "/error", "/users/profile",
-                                                "/api/getCity").permitAll()
+                                                "/api/getCity", "/users/config").permitAll()
                                         // all other URL-s should be authenticated.
                                         .requestMatchers("/api/**").permitAll()
                                         .anyRequest()
