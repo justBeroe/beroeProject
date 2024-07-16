@@ -23,7 +23,7 @@ public class HomeController {
                        Model model) {
 
         if (userDetails instanceof MobileleUserDetails mobileleUserDetails) {
-            model.addAttribute("welcomeMessage", mobileleUserDetails.getFullName());
+            model.addAttribute("welcomeMessage", mobileleUserDetails.getUsername());
         } else {
             model.addAttribute("welcomeMessage", "Anonymous");
         }
