@@ -4,12 +4,12 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
-public class MobileleUserDetails extends User {
+public class BeroeUserDetails extends User {
 
   private final String firstName;
   private final String lastName;
 
-  public MobileleUserDetails(
+  public BeroeUserDetails(
       String username,
       String password,
       Collection<? extends GrantedAuthority> authorities,

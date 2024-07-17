@@ -2,7 +2,7 @@ package bg.softuni.beroe.service.impl;
 
 import bg.softuni.beroe.model.entity.UserRoleEntity;
 import bg.softuni.beroe.model.enums.UserRoleEnum;
-import bg.softuni.beroe.model.user.MobileleUserDetails;
+import bg.softuni.beroe.model.user.BeroeUserDetails;
 import bg.softuni.beroe.model.entity.UserEntity;
 import bg.softuni.beroe.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,11 +11,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-public class MobileleUserDetailsService implements UserDetailsService {
+public class BeroeUserDetailsService implements UserDetailsService {
 
   private final UserRepository userRepository;
 
-  public MobileleUserDetailsService(UserRepository userRepository) {
+  public BeroeUserDetailsService(UserRepository userRepository) {
     this.userRepository = userRepository;
   }
 
@@ -25,7 +25,7 @@ public class MobileleUserDetailsService implements UserDetailsService {
 
     UserDetails userDetails = userRepository
             .findByUsername(username)
-            .map(MobileleUserDetailsService::map)
+            .map(BeroeUserDetailsService::map)
             //OR userEntity -> map(userEntity)
             .orElseThrow(
                     () -> new UsernameNotFoundException("User with username " + username + " not found!"));
@@ -34,10 +34,10 @@ public class MobileleUserDetailsService implements UserDetailsService {
 
   private static UserDetails map(UserEntity userEntity) {
 
-    return new MobileleUserDetails(
+    return new BeroeUserDetails(
         userEntity.getUsername(),
         userEntity.getPassword(),
-        userEntity.getRoles().stream().map(UserRoleEntity::getRole).map(MobileleUserDetailsService::map).toList(),
+        userEntity.getRoles().stream().map(UserRoleEntity::getRole).map(BeroeUserDetailsService::map).toList(),
         userEntity.getFirstName(),
         userEntity.getLastName()
     );

@@ -1,7 +1,6 @@
 package bg.softuni.beroe.web;
 
-import bg.softuni.beroe.model.user.MobileleUserDetails;
-import bg.softuni.beroe.service.UserService;
+import bg.softuni.beroe.model.user.BeroeUserDetails;
 import bg.softuni.beroe.service.WeatherService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,8 +21,8 @@ public class HomeController {
     public String home(@AuthenticationPrincipal UserDetails userDetails,
                        Model model) {
 
-        if (userDetails instanceof MobileleUserDetails mobileleUserDetails) {
-            model.addAttribute("welcomeMessage", mobileleUserDetails.getUsername());
+        if (userDetails instanceof BeroeUserDetails beroeUserDetails) {
+            model.addAttribute("welcomeMessage", beroeUserDetails.getUsername());
         } else {
             model.addAttribute("welcomeMessage", "Anonymous");
         }
