@@ -54,6 +54,7 @@ public class ExRateServiceImpl implements ExRateService {
     return restClient
         .get()
         .uri(forexApiConfig.getUrl(), forexApiConfig.getKey())
+            //OR .uri(https://openexchangerates.org/api/latest.json?app_id=114a57a63b7145899ed094c106fd4d8c)
         .accept(MediaType.APPLICATION_JSON)
         .retrieve()
         .body(ExRatesDTO.class);

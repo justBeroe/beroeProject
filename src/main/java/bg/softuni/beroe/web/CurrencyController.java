@@ -28,6 +28,10 @@ public class CurrencyController {
       @RequestParam("to") String to,
       @RequestParam("amount") BigDecimal amount
   ) {
+
+
+    // GET request ---> http://localhost:8081/api/convert?from=BGN&to=EUR&amount=50
+
     BigDecimal result = exRateService.convert(from, to, amount);
 
     return ResponseEntity.ok(new ConversionResultDTO(

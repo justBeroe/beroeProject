@@ -15,7 +15,8 @@ function currencyChange() {
       }
   ))
   .then(response => response.json())
-  .then(data => {priceSpan.textContent = data.result})
+  .then(data => {priceSpan.innerHTML  = '&nbsp;' + data.result})
+ // .then(data => {priceSpan.textContent = '&nbsp;' + data.result})
   .catch(error => {
     console.log('An error occurred:' + error)
   })

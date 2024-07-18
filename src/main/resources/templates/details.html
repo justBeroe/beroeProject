@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>MobiLeLeLe</title>
+    <title>Fan item details</title>
     <link rel="stylesheet" href="/css/reset-css.css"/>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/main.css"/>
@@ -29,9 +29,10 @@
             <ul class="offer-details list-group list-group-flush">
                 <li class="list-group-item">
                     <div class="card-text">Item:<span th:text="' ' + *{item}"></span></div>
-                    <div class="card-text">Price:<span th:text="' ' + *{price}"></span></div>
+                    <div class="card-text">Price:<span id="price" th:text="' ' + *{price}"></span></div>
                     <div class="card-text">Fan size:<span th:text="' ' + *{fanSize}"></span></div>
                     <div class="card-text">Description: <span th:text="' ' + *{description}"></span></div>
+
                     <div class="card-text"><h4>Change to different currency:</h4>
                         <select id="currency">
                             <option
@@ -75,7 +76,7 @@
                     <input type="hidden" id="id" name="id" th:value="*{id}" required/>
 
                     <label for="price"></label>
-                    <input type="number" id="price" name="price" placeholder="Enter Price" required/>
+                    <input type="number" id="price1" name="price" placeholder="Enter Price" required/>
 
                     <button type="submit" class="btn btn-primary mb-2">Update</button>
                 </form>
