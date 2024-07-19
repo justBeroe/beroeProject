@@ -1,4 +1,4 @@
-package bg.softuni.mobilele.web;
+package bg.softuni.beroe.web;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -6,9 +6,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import bg.softuni.mobilele.model.entity.UserEntity;
-import bg.softuni.mobilele.repository.UserRepository;
+
 import java.util.Optional;
+
+import bg.softuni.beroe.model.entity.UserEntity;
+import bg.softuni.beroe.repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +44,7 @@ public class RegistrationControllerIT {
     ).andExpect(status().is3xxRedirection())
         .andExpect(redirectedUrl("/"));
 
-    Optional<UserEntity> userEntityOpt = userRepository.findByEmail("anna@example.com");
+    Optional<UserEntity> userEntityOpt = userRepository.findByUsername("anna");
 
     Assertions.assertTrue(userEntityOpt.isPresent());
 

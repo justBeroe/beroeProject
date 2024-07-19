@@ -17,13 +17,16 @@
 
 
 <div class="container-fluid">
-    <h4 class="text-center text-white mt-5">Welcome to BEROE PROJECT,
-        <th:block th:text="${welcomeMessage} + ' user'"></th:block>
+    <h4 class="text-center text-white mt-5" th:text="#{index_page_welcome} + ', ' + ${welcomeMessage} + ' ' +
+    #{index_page_anonymous}">Welcome to BEROE PROJECT,
+
+<!--        <th:block th:text="${welcomeMessage} + ' user'"></th:block>-->
     </h4>
+<!--    <h4 th:text="${welcomeMessage} + ' user'"></h4>-->
 </div>
 <!--<div class="top-box top-box-a">-->
 <div class="top-box top-box-a position-absolute" style="top: 220px; right: 40px;">
-    <h4 th:text="'Weather in ' + ${profileDataCityOnly}">Времето в София</h4>
+    <h4 th:text="#{index_page_weather} + ' ' + ${profileDataCityOnly}">Времето в София</h4>
     <h4><span th:text="${TempOnly} + ' '" id="box-a-temp"></span><span>&#8451;</span></h4>
     <img id="box-a-img" src="/images/wicon.png" height="150px" alt="">
 </div>

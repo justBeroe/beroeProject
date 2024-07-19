@@ -1,13 +1,15 @@
-package bg.softuni.mobilele.web;
+package bg.softuni.beroe.web;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import bg.softuni.mobilele.service.ExRateService;
-import bg.softuni.mobilele.service.exception.ApiObjectNotFoundException;
+
 import java.math.BigDecimal;
+
+import bg.softuni.beroe.service.ExRateService;
+import bg.softuni.beroe.service.exception.ApiObjectNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

@@ -1,13 +1,16 @@
-package bg.softuni.mobilele.service.impl;
+package bg.softuni.beroe.service.impl;
 
 import static org.mockito.Mockito.when;
 
-import bg.softuni.mobilele.config.ForexApiConfig;
-import bg.softuni.mobilele.model.entity.ExRateEntity;
-import bg.softuni.mobilele.repository.ExRateRepository;
-import bg.softuni.mobilele.service.exception.ApiObjectNotFoundException;
+
 import java.math.BigDecimal;
 import java.util.Optional;
+
+import bg.softuni.beroe.config.ForexApiConfig;
+import bg.softuni.beroe.model.entity.ExRateEntity;
+import bg.softuni.beroe.repository.ExRateRepository;
+import bg.softuni.beroe.service.exception.ApiObjectNotFoundException;
+import bg.softuni.beroe.service.impl.ExRateServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -78,6 +81,7 @@ class ExRateServiceImplTest {
   void testApiObjectNotFoundException() {
     Assertions.assertThrows(ApiObjectNotFoundException.class,
         () -> toTest.convert("NO_EXIST_1", "NOT_EXIST_2", BigDecimal.ONE)
+       // () -> toTest.convert("LBD", "LBD", BigDecimal.valueOf(2.00))
     );
   }
 

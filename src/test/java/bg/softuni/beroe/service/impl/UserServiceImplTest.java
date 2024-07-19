@@ -1,12 +1,15 @@
-package bg.softuni.mobilele.service.impl;
+package bg.softuni.beroe.service.impl;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import bg.softuni.mobilele.model.dto.UserRegistrationDTO;
-import bg.softuni.mobilele.model.entity.UserEntity;
-import bg.softuni.mobilele.repository.UserRepository;
+
+import bg.softuni.beroe.model.dto.UserRegistrationDTO;
+import bg.softuni.beroe.model.entity.UserEntity;
+import bg.softuni.beroe.repository.UserRepository;
+import bg.softuni.beroe.repository.UserRoleRepository;
+import bg.softuni.beroe.service.UserHelperService;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -25,57 +28,66 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @ExtendWith(MockitoExtension.class)
 public class UserServiceImplTest {
 
-  private UserServiceImpl toTest;
+    private UserServiceImpl toTest;
 
-  @Captor
-  private ArgumentCaptor<UserEntity> userEntityCaptor;
+    @Captor
+    private ArgumentCaptor<UserEntity> userEntityCaptor;
 
-  @Mock
-  private UserRepository mockUserRepository;
+    @Mock
+    private UserRepository mockUserRepository;
 
-  @Mock
-  private PasswordEncoder mockPasswordEncoder;
+    @Mock
+    private PasswordEncoder mockPasswordEncoder;
 
-  @BeforeEach
-  void setUp() {
+    @Mock
+    private UserRoleRepository mockUserRoleRepository;
 
-    toTest = new UserServiceImpl(
-        new ModelMapper(),
-        mockPasswordEncoder,
-        mockUserRepository
-    );
+    @Mock
+    private UserHelperService mockUserHelperService;
 
-  }
+    @BeforeEach
+    void setUp() {
 
-  @Test
-  void testUserRegistration() {
-    // Arrange
+        toTest = new UserServiceImpl(
+                new ModelMapper(),
+                mockPasswordEncoder,
+                mockUserRepository,
+                mockUserRoleRepository,
+                mockUserHelperService
+        );
 
-    UserRegistrationDTO userRegistrationDTO =
-        new UserRegistrationDTO()
-            .setFirstName("Anna")
-            .setLastName("Dimitrova")
-            .setPassword("topsecret")
-            .setEmail("anna@example.com");
+    }
 
-    when(mockPasswordEncoder.encode(userRegistrationDTO.getPassword()))
-        .thenReturn(userRegistrationDTO.getPassword()+userRegistrationDTO.getPassword());
+    @Test
+    void testUserRegistration() {
+
+      // Arrange
+
+        UserRegistrationDTO userRegistrationDTO =
+                new UserRegistrationDTO()
+                        .setFirstName("Anna")
+                        .setLastName("Dimitrova")
+                        .setPassword("topsecret")
+                        .setUsername("anna");
+
+        when(mockPasswordEncoder.encode(userRegistrationDTO.getPassword()))
+                .thenReturn(userRegistrationDTO.getPassword() + userRegistrationDTO.getPassword());
 
 
-    // ACT
-    toTest.registerUser(userRegistrationDTO);
+        // ACT
+        toTest.registerUser(userRegistrationDTO);
 
-    // Assert
-    verify(mockUserRepository).save(userEntityCaptor.capture());
+        // Assert
+        verify(mockUserRepository).save(userEntityCaptor.capture());
 
-    UserEntity actualSavedEntity = userEntityCaptor.getValue();
+        UserEntity actualSavedEntity = userEntityCaptor.getValue();
 
-    Assertions.assertNotNull(actualSavedEntity);
-    Assertions.assertEquals(userRegistrationDTO.getFirstName(), actualSavedEntity.getFirstName());
-    Assertions.assertEquals(userRegistrationDTO.getLastName(), actualSavedEntity.getLastName());
-    Assertions.assertEquals(userRegistrationDTO.getPassword() + userRegistrationDTO.getPassword(),
-        actualSavedEntity.getPassword());
-    Assertions.assertEquals(userRegistrationDTO.getEmail(), actualSavedEntity.getEmail());
-  }
+        Assertions.assertNotNull(actualSavedEntity);
+        Assertions.assertEquals(userRegistrationDTO.getFirstName(), actualSavedEntity.getFirstName());
+        Assertions.assertEquals(userRegistrationDTO.getLastName(), actualSavedEntity.getLastName());
+        Assertions.assertEquals(userRegistrationDTO.getPassword() + userRegistrationDTO.getPassword(),
+                actualSavedEntity.getPassword());
+        Assertions.assertEquals(userRegistrationDTO.getUsername(), actualSavedEntity.getUsername());
+    }
 
 }

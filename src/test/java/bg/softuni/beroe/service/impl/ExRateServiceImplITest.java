@@ -1,28 +1,29 @@
-package bg.softuni.mobilele.service.impl;
+package bg.softuni.beroe.service.impl;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
-import static com.github.tomakehurst.wiremock.client.WireMock.get;
 
-import bg.softuni.mobilele.config.ForexApiConfig;
-import bg.softuni.mobilele.model.dto.ExRatesDTO;
-import bg.softuni.mobilele.service.ExRateService;
+import bg.softuni.beroe.config.ForexApiConfig;
+import bg.softuni.beroe.model.dto.ExRatesDTO;
+import bg.softuni.beroe.service.ExRateService;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.maciejwalkowiak.wiremock.spring.ConfigureWireMock;
 import com.maciejwalkowiak.wiremock.spring.EnableWireMock;
 import com.maciejwalkowiak.wiremock.spring.InjectWireMock;
-import java.math.BigDecimal;
-import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.math.BigDecimal;
+
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.get;
+
 @SpringBootTest
 @EnableWireMock(
     @ConfigureWireMock(name = "exchange-rate-service")
 )
-public class ExRateServiceImplIT {
+public class ExRateServiceImplITest {
 
   @InjectWireMock("exchange-rate-service")
   private WireMockServer wireMockServer;
