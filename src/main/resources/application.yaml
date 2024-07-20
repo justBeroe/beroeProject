@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: beroeProject
+#  thymeleaf:
+#    check-template-location: true
+#    cache: false
+#    prefix: file:./src/main/resources/templates/
+
+#Auto Reload for Thymeleaf without restarting project
+
+  thymeleaf:
+    check-template-location: true
+    cache: false
+    prefix: file:./src/main/resources/templates/
+    resources:
+      static-locations: file:./src/main/resources/static/
+      cache-period: 0
+
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mobilele?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: beroe
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      mode: never
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+forex:
+  api:
+#    key: ${FOREX_API_KEY:}
+    key: "114a57a63b7145899ed094c106fd4d8c"
+    url: "https://openexchangerates.org/api/latest.json?app_id={app_id}"
+    base: "USD"
+
+offers:
+  api:
+    baseUrl: "http://localhost:8082"
+server:
+  port: 8081
+
+

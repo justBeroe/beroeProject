@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Cron Expression</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <script src="/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar::navbar(activeLink=${'config'})}"></div>
+
+<div class="container mt-5">
+    <h2 class="text-center text-white">Update Cron Expression [example: */10 * * * * *]</h2>
+
+    <!-- Message Paragraph -->
+    <p th:text="${message}" class="text-success"></p>
+    <form
+            th:method="post"
+            th:action="@{/users/config}"
+            th:object="${getCron}"
+
+    >
+        <div class="form-group">
+            <label for="cron">Cron Expression:</label>
+            <input
+                    type="text"
+                    id="cron"
+                    name="cron"
+                    class="form-control"
+                    placeholder="*/10 * * * * *" >
+        </div>
+        <button type="submit" class="btn btn-primary">Update Cron</button>
+    </form>
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

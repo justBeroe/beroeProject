@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Weather fragment page</title>
+
+
+</head>
+<body>
+<div th:fragment="weatherFragment" class="top-box top-box-a position-absolute" style="top: 120px; right: 40px;  padding: 20px; /* Space inside the border */
+            margin: 10px; /* Space outside the border */
+            border: 2px solid #007bff; /* Blue border */
+            border-radius: 8px; /* Rounded corners */
+            background-color: #f8f9fa; /* Light background color */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */ ">
+<!--<div th:fragment="weatherFragment" class="top-box top-box-a position-absolute" style="top: 120px; right: 40px; border: 1px solid black; ">-->
+    <h4 th:text="#{index_page_weather} + ' ' + ${profileDataCityOnly}">Weather in Sofia</h4>
+    <h4><span th:text="${TempOnly} + ' '" id="box-a-temp">25</span><span>&#8451;</span></h4>
+    <img id="box-a-img" src="/images/wicon.png" height="150px" alt="Weather Icon">
+</div>
+</body>
+</html>

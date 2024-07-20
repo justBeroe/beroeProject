@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>BEROE PROJECT</title>
+  <link rel="stylesheet" href="/css/reset-css.css"/>
+  <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+  <script src="/js/jquery-3.5.1.slim.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <style>
+    .bg-dark-green {
+      background-color: #1c7430; /* Darker green */
+    }
+  </style>
+</head>
+
+<body>
+
+<div th:fragment="navbar(activeLink)">
+
+  <nav class="navbar navbar-expand-lg bg-success navbar-dark fixed-top w-200">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav mr-auto col-12 justify-content-between">
+        <li class="nav-item">
+        <a class="navbar-brand" href="/images/beroeLogo.png" style="position: absolute; top: 5px; left: 50px;">
+          <img alt="car picture" src="/images/mobileLogoBeroe.png" class="logo">
+        </a>
+        </li>
+        <li class="nav-item"
+        >
+<!--          <a class="nav-link" href="/brands/all">All Brands</a>-->
+        </li>
+        <li class="nav-item" sec:authorize="isAuthenticated()">
+          <a class="nav-link" href="/offers/add"  th:classappend="${activeLink == 'add-offer'}? 'active'" th:text = "#{nav_bar_add_offers}">Add Fan item</a>
+        </li>
+        <li class="nav-item" sec:authorize="isAuthenticated()">
+          <a class="nav-link" href="/offers/all" th:classappend="${activeLink == 'all-offers'}? 'active'" th:text = "#{nav_bar_all_brands}">All Fan items</a>
+        </li>
+        <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
+          <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Admin
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/users/config"
+               th:classappend="${activeLink == 'config'}? 'active'">Configuration</a>
+<!--            <a class="dropdown-item" href="/">Another action</a>-->
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/users/profile"
+               th:classappend="${activeLink == 'profile'}? 'active'">Profile</a>
+          </div>
+        </li>
+        <li class="nav-item" sec:authorize="isAuthenticated()">
+          <div class="form-inline my-2 my-lg-0 border px-3">
+            <div class="logged-user"
+                 ></div>
+            <form th:method="post"
+                  th:action="@{/users/logout}"
+                  >
+              <input class="btn btn-link" type="submit" value="Logout" style="color: white;" th:value="#{nav_bar_logout}"/>
+            </form>
+          </div>
+        </li>
+<!--        <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--          <a class="nav-link" href="/users/profile"-->
+<!--             th:classappend="${activeLink == 'profile'}? 'active'">Profile</a>-->
+<!--        </li>-->
+
+        <li class="nav-item" sec:authorize="!isAuthenticated()">
+          <a class="nav-link" href="/users/register"
+             th:classappend="${activeLink == 'register'}? 'active'" th:text = "#{nav_bar_login_register}">Register</a>
+        </li>
+        <li class="nav-item" sec:authorize=="!isAuthenticated()">
+          <a class="nav-link" href="/users/login"
+             th:classappend="${activeLink == 'login'}? 'active'" th:text = "#{nav_bar_login}">
+            Login
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <form th:method="get">
+            <label class="text-white"  th:text="#{nav_bar_language}">Language</label>
+
+
+<!--            returns ==== messageSource.setBasename("classpath:i18n/messages") in I18NConfig default to English-->
+            <select
+                    id="lang"
+                    name="lang"
+                    onchange="this.form.submit()"
+                    style="margin-left: 10px;"
+                    class="form-select ms-2"
+            >
+                <!-- Adjust the value as needed -->
+              <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
+              <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+            </select>
+
+        <!--            country & language - bg_BG-->
+<!--     for in label HTML tag ---- Specifies the id of the form element the label should be bound to-->
+
+          </form>
+
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+
+</div>
+
+</body>
+</html>
