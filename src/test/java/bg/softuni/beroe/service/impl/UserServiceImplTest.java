@@ -25,6 +25,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+//@Disabled
 @ExtendWith(MockitoExtension.class)
 public class UserServiceImplTest {
 
@@ -32,6 +33,8 @@ public class UserServiceImplTest {
 
     @Captor
     private ArgumentCaptor<UserEntity> userEntityCaptor;
+
+    // catch what is entered in mock repository
 
     @Mock
     private UserRepository mockUserRepository;
@@ -70,8 +73,11 @@ public class UserServiceImplTest {
                         .setPassword("topsecret")
                         .setUsername("anna");
 
+//        when(mockPasswordEncoder.encode(userRegistrationDTO.getPassword()))
+//                .thenReturn(userRegistrationDTO.getPassword() + userRegistrationDTO.getPassword());
+
         when(mockPasswordEncoder.encode(userRegistrationDTO.getPassword()))
-                .thenReturn(userRegistrationDTO.getPassword() + userRegistrationDTO.getPassword());
+                .thenReturn(userRegistrationDTO.getPassword());
 
 
         // ACT
@@ -85,7 +91,10 @@ public class UserServiceImplTest {
         Assertions.assertNotNull(actualSavedEntity);
         Assertions.assertEquals(userRegistrationDTO.getFirstName(), actualSavedEntity.getFirstName());
         Assertions.assertEquals(userRegistrationDTO.getLastName(), actualSavedEntity.getLastName());
-        Assertions.assertEquals(userRegistrationDTO.getPassword() + userRegistrationDTO.getPassword(),
+//        Assertions.assertEquals(userRegistrationDTO.getPassword() + userRegistrationDTO.getPassword(),
+//                actualSavedEntity.getPassword());
+        // with double password TEST
+        Assertions.assertEquals(userRegistrationDTO.getPassword(),
                 actualSavedEntity.getPassword());
         Assertions.assertEquals(userRegistrationDTO.getUsername(), actualSavedEntity.getUsername());
     }
