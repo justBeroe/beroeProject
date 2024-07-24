@@ -8,9 +8,7 @@ import bg.softuni.beroe.service.WeatherService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -52,6 +50,42 @@ public class UserController {
     }
 
 //
+
+    @GetMapping("/users/confusers")
+    public ModelAndView usersConfigurationPage() {
+        ModelAndView modelAndView = new ModelAndView("users-config");
+
+
+
+        modelAndView.addObject("allUsers", userService.findAllUsers());
+        //modelAndView.addObject("profileDataCityOnly", weatherService.fetchCity().getCity());
+
+
+        return modelAndView;
+    }
+
+//    @DeleteMapping("/users/delete/{id}")
+//    public String deleteUser(@PathVariable Long id) {
+//        System.out.println(id);
+//        userService.deleteUserById(id);
+//        return "redirect:/users/confusers";
+//    }
+
+    @DeleteMapping("/users/delete/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        try {
+            userService.deleteUserById(id);
+        } catch (Exception e) {
+            // Handle exceptions (e.g., log error or notify user)
+            System.err.println("Error deleting user: " + e.getMessage());
+        }
+        return "redirect:/users/confusers"; // Redirect to a page showing the updated list of users
+    }
+
+
+
+
+    ////
 
     @PostMapping("/users/config")
     public ModelAndView cronConfigurePage(@ModelAttribute CronDTO cronDTO) {

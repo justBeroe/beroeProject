@@ -57,6 +57,8 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/users/profile"
                th:classappend="${activeLink == 'profile'}? 'active'">Profile</a>
+              <a class="dropdown-item" href="/users/confusers"
+                 th:classappend="${activeLink == 'users'}? 'active'">Users</a>
           </div>
         </li>
         <li class="nav-item" sec:authorize="isAuthenticated()">

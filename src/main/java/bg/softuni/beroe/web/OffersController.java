@@ -33,11 +33,13 @@ public class OffersController {
   }
 
   @GetMapping("/all")
+
   public String getAllOffers(Model model) {
     String currentUsername = userHelperService.getUser().getUsername();
     UserProfileDto profileData = userService.getProfileData();
     UserEntity user = userHelperService.getUser();
-    UserRoleEntity first = user.getRoles().getLast();
+
+    UserRoleEntity first = user.getRoles().getFirst();
     String userRole = first.getRole().toString();
   //  System.out.println(userRole);
     if (userRole.equals("ADMIN")) {

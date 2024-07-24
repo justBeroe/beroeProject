@@ -11,6 +11,7 @@ import bg.softuni.beroe.service.UserHelperService;
 import bg.softuni.beroe.service.UserService;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -84,5 +85,43 @@ public class UserServiceImpl implements UserService {
         UserEntity user = userHelperService.getUser();
 
         return modelMapper.map(user, UserProfileDto.class);
+    }
+
+    @Override
+    public List<UserEntity> findAllUsers() {
+        return userRepository.findAll();
+    }
+
+    @Transactional
+    @Override
+    public void deleteUserById(Long id) {
+        UserEntity user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        String username = user.getUsername();
+        UserEntity loggedInUser = userHelperService.getUser(); // Get the currently logged-in user
+        String loggedInUsername = loggedInUser.getUsername();
+
+        if (loggedInUsername.equals(username)) {
+            // Do not delete the currently logged-in user
+            throw new RuntimeException("Cannot delete the currently logged-in user.");
+        }
+
+
+        // Remove user from roles
+        user.getRoles().clear(); // This removes the associations but keeps roles in the database
+
+        // Optionally remove user roles if no other users are associated with them
+        // for (UserRoleEntity role : user.getRoles()) {
+        //     if (role.getUsers().isEmpty()) {
+        //         userRoleRepository.delete(role);
+        //     }
+        // }
+
+        // Remove user fan items (if needed)
+        user.getFanItems().clear();
+
+        // Delete the user
+        userRepository.delete(user);
     }
 }
