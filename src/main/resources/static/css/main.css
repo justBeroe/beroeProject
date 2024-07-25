@@ -7,8 +7,13 @@ body {
      background-color: #464646;
  }
 
-.navbar .logo {
-     max-height: 150px;
+.navbar  {
+     max-height: 290px;
+     padding-right: 100px;
+}
+
+.logo {
+     max-height: 390px;
      padding-right: 100px;
 }
 

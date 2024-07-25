@@ -27,4 +27,10 @@ public class RestConfig {
     return RestClient.create();
   }
 
+  @Bean("getPlayers")
+  public RestClient getPlayers() {
+    return RestClient.create();
+  }
+
+
 }

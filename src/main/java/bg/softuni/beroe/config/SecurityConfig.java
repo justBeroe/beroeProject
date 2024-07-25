@@ -28,7 +28,7 @@ public class SecurityConfig {
                                                 "/offers/{id}", "/api/convert", "offers/add", "/users/beroe", "/error", "/users/profile",
                                                 "/api/getCity", "/users/config").permitAll()
                                         // all other URL-s should be authenticated.
-                                        .requestMatchers("/api/**", "/users/delete/{id}").permitAll()
+                                        .requestMatchers("/api/**", "/users/delete/{id}", "/player/**").permitAll()
                                         .anyRequest()
                                         .authenticated()
                 )

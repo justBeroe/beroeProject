@@ -19,6 +19,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/offers")
+
 public class OffersController {
 
   private final FanService fanService;
@@ -33,7 +34,7 @@ public class OffersController {
   }
 
   @GetMapping("/all")
-
+  @SuppressWarnings({"unchecked", "rawtypes"})
   public String getAllOffers(Model model) {
     String currentUsername = userHelperService.getUser().getUsername();
     UserProfileDto profileData = userService.getProfileData();

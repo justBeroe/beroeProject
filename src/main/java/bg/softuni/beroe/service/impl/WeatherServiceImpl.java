@@ -20,7 +20,8 @@ public class WeatherServiceImpl implements WeatherService {
   //  private final ExRateRepository exRateRepository;
     private final RestClient restClient;
 
-    public WeatherServiceImpl(ExRateRepository exRateRepository, @Qualifier("weatherRestClient") RestClient restClient) {
+    public WeatherServiceImpl(ExRateRepository exRateRepository,
+                              @Qualifier("weatherRestClient") RestClient restClient) {
       //  this.exRateRepository = exRateRepository;
         this.restClient = restClient;
     }
