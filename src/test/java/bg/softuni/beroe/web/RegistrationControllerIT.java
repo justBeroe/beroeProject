@@ -10,14 +10,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.Optional;
 
 import bg.softuni.beroe.model.entity.UserEntity;
+import bg.softuni.beroe.model.enums.UserRoleEnum;
 import bg.softuni.beroe.repository.UserRepository;
+import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -27,6 +32,7 @@ public class RegistrationControllerIT {
   private MockMvc mockMvc;
 
   @Autowired
+  //@MockBean
   private UserRepository userRepository;
 
   @Autowired
@@ -35,24 +41,30 @@ public class RegistrationControllerIT {
   @Test
   void testRegistration() throws Exception {
 
-    mockMvc.perform(post("/users/register")
-        .param("email", "anna@example.com")
-        .param("firstName", "Anna")
-        .param("lastName", "Petrova")
-        .param("password", "topsecret")
-            .with(csrf())
-    ).andExpect(status().is3xxRedirection())
-        .andExpect(redirectedUrl("/"));
+    UserRoleEnum role = UserRoleEnum.USER;
+      String name = role.name();
 
-    Optional<UserEntity> userEntityOpt = userRepository.findByUsername("anna");
+      MvcResult result = mockMvc.perform(post("/users/register")
+                    .param("username", "beroe12")
+                    .param("firstName", "Dobromir")
+                    .param("lastName", "Todorov")
+                    .param("password", "beroe12")
+                   .param("role", name) // Add role as a parameter
+                    .with(csrf())
+            ).andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrl("/"))
+            .andReturn();
+    System.out.println();
+
+   Optional<UserEntity> userEntityOpt = userRepository.findByUsername("beroe12");
 
     Assertions.assertTrue(userEntityOpt.isPresent());
 
     UserEntity userEntity = userEntityOpt.get();
 
-    Assertions.assertEquals("Anna", userEntity.getFirstName());
-    Assertions.assertEquals("Petrova", userEntity.getLastName());
+    Assertions.assertEquals("Dobromir", userEntity.getFirstName());
+    Assertions.assertEquals("Todorov", userEntity.getLastName());
 
-    Assertions.assertTrue(passwordEncoder.matches("topsecret", userEntity.getPassword()));
+    Assertions.assertTrue(passwordEncoder.matches("beroe12", userEntity.getPassword()));
   }
 }

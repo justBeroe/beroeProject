@@ -30,10 +30,10 @@ public class CurrencyControllerIT {
 
   @Test
   public void testConvert() throws Exception {
-    String from = "SUD";
-    String to = "ZWD";
-    BigDecimal amount = new BigDecimal("100");
-    BigDecimal expectedResult = new BigDecimal("50");
+    String from = "BGN";
+    String to = "EUR";
+    BigDecimal amount = new BigDecimal("1000");
+    BigDecimal expectedResult = new BigDecimal("510");
 
     when(mockExRateService.convert(from, to, amount)).thenReturn(expectedResult);
 
@@ -50,9 +50,9 @@ public class CurrencyControllerIT {
 
   @Test
   public void testConversionNotFound() throws Exception {
-    String from = "SUD";
-    String to = "ZWD";
-    BigDecimal amount = new BigDecimal("100");
+    String from = "BGR";
+    String to = "EUR";
+    BigDecimal amount = new BigDecimal("1000");
 
     when(mockExRateService.convert(from, to, amount))
         .thenThrow(new ApiObjectNotFoundException("Test message", "TestId"));
@@ -61,7 +61,7 @@ public class CurrencyControllerIT {
         .param("from", from)
         .param("to", to)
         .param("amount", String.valueOf(amount.intValue()))
-    ).andExpect(status().isNotFound());
+    ).andExpect(status().isPaymentRequired());
   }
 
 }

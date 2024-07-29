@@ -34,13 +34,13 @@ public class OffersController {
   }
 
   @GetMapping("/all")
-  @SuppressWarnings({"unchecked", "rawtypes"})
+  //@SuppressWarnings({"unchecked", "rawtypes"})
   public String getAllOffers(Model model) {
     String currentUsername = userHelperService.getUser().getUsername();
     UserProfileDto profileData = userService.getProfileData();
     UserEntity user = userHelperService.getUser();
 
-    UserRoleEntity first = user.getRoles().getFirst();
+    UserRoleEntity first = user.getRoles().get(0);
     String userRole = first.getRole().toString();
   //  System.out.println(userRole);
     if (userRole.equals("ADMIN")) {

@@ -46,7 +46,7 @@ public class RegistrationController {
 
     System.out.println("Register Debug: " + registerDTO);
     userService.registerUser(registerDTO);
-
+    System.out.println();
     return "redirect:/";
   }
 

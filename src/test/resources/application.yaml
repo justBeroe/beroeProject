@@ -1,0 +1,32 @@
+spring:
+  jpa:
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      mode: never
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+#forex:
+#  api:
+#    key: test
+#    url: "http://example.com"
+#    base: "USD"
+
+forex:
+  api:
+    #    key: ${FOREX_API_KEY:}
+    key: "114a57a63b7145899ed094c106fd4d8c"
+    url: "https://openexchangerates.org/api/latest.json?app_id={app_id}"
+    base: "USD"
+
+offers:
+  api:
+    baseUrl: "http://localhost:8081"

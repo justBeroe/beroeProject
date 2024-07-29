@@ -97,6 +97,8 @@ public class ExRateServiceImpl implements ExRateService {
     Optional<BigDecimal> fromOpt = forexApiConfig.getBase().equals(from) ?
         Optional.of(BigDecimal.ONE) :
         exRateRepository.findByCurrency(from).map(ExRateEntity::getRate);
+                        //OR exRateEntity -> exRateEntity.getRate()
+
 
     Optional<BigDecimal> toOpt = forexApiConfig.getBase().equals(to) ?
         Optional.of(BigDecimal.ONE) :

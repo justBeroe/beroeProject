@@ -17,10 +17,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
+
                 .authorizeHttpRequests(
                         // Setup which URL-s are available to who
                         authorizeRequests ->
                                 authorizeRequests
+
                                         // all static resources to "common locations" (css, images, js) are available to anyone
                                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                         // some more resources for all users
@@ -28,7 +30,7 @@ public class SecurityConfig {
                                                 "/offers/{id}", "/api/convert", "offers/add", "/users/beroe", "/error", "/users/profile",
                                                 "/api/getCity", "/users/config").permitAll()
                                         // all other URL-s should be authenticated.
-                                        .requestMatchers("/api/**", "/users/delete/{id}", "/player/**").permitAll()
+                                        .requestMatchers("/api/**", "/users/delete/{id}", "/player/**", "/offers/**").permitAll()
                                         .anyRequest()
                                         .authenticated()
                 )

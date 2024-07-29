@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.User;
 
 
 public record AddOfferDTO(
-    @NotEmpty(message = "{add.offer.description.not.empty}")
+    //@NotEmpty
     @Size(message = "Description should be between 5 and 500 symbols.",
         min = 1,
         max = 500) String description,//not necessarily from message source
