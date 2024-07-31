@@ -2,6 +2,8 @@ package bg.softuni.beroe.service.impl;
 
 
 import bg.softuni.beroe.model.dto.PlayerDTO;
+import bg.softuni.beroe.model.entity.PlayerEntity;
+import bg.softuni.beroe.repository.PlayerRepository;
 import bg.softuni.beroe.service.PlayerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
@@ -15,6 +17,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
@@ -26,13 +30,17 @@ public class PlayerServiceImpl implements PlayerService {
     private final RestClient restClient;
     private final ObjectMapper objectMapper;
 
+    @Autowired
+    private PlayerRepository playerRepository;
+
     public PlayerServiceImpl(@Qualifier("getPlayers") RestClient restClient, ObjectMapper objectMapper) {
         this.restClient = restClient;
         this.objectMapper = objectMapper;
+
     }
 
     @Override
-    public PlayerDTO fetchPayer() {
+    public PlayerDTO fetchPlayer() {
 
         PlayerDTO body = restClient
                 .get()
@@ -45,6 +53,8 @@ public class PlayerServiceImpl implements PlayerService {
         return body;
     }
 
+
+
     public PlayerDTO readJson(Gson gson) throws FileNotFoundException {
         File jsonFile = new File("C:\\Users\\up636306\\Desktop\\PythonSoftUni\\Spring Advanced\\FinalProject\\src\\main\\resources\\player.json");
         String json = String.valueOf(jsonFile);
@@ -55,6 +65,33 @@ public class PlayerServiceImpl implements PlayerService {
 //        System.out.println(playerDTOS);
 
         return playerDTO;
+
+    }
+
+    @Override
+    public void savePlayers() throws FileNotFoundException {
+        PlayerDTO playerDTO = readJson(new Gson());
+
+        // Convert PlayerDTO to PlayerEntity
+        //PlayerEntity playerEntity = new PlayerEntity();
+        List<PlayerEntity> playerEntityList = new ArrayList<>();
+
+        for (PlayerDTO.PlayerResponse response : playerDTO.getResponse()) {
+            PlayerEntity playerEntity = new PlayerEntity();
+            playerEntity.setPlayerName(response.getPlayer().getName()); // Adjust according to actual fields
+            playerEntity.setPosition(response.getStatistics().get(0).getGames().getPosition()); // Adjust according to actual fields
+            playerEntityList.add(playerEntity);
+        }
+
+        // Save the list of PlayerEntity to the database
+        if (!playerEntityList.isEmpty()) {
+            if (playerRepository.count() <= 0 ) {
+                playerRepository.saveAll(playerEntityList);
+                System.out.println("Players saved to the database.");
+            }
+        } else {
+            System.out.println("No players to save.");
+        }
 
     }
 
@@ -90,7 +127,7 @@ public class PlayerServiceImpl implements PlayerService {
 
     // Example method to fetch and save player data
     public PlayerDTO fetchAndSavePlayer() throws IOException {
-        PlayerDTO playerDTO = fetchPayer();
+        PlayerDTO playerDTO = fetchPlayer();
         savePlayerToJson(playerDTO, "player.json");
         return playerDTO;
     }

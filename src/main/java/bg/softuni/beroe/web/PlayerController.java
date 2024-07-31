@@ -36,6 +36,7 @@ public class PlayerController {
          PlayerDTO playerDTO1 = playerService.fetchAndSavePlayer();
     //    System.out.println(playerDTO);
        model.addAttribute("player", playerDTO);
+       playerService.savePlayers();
         return "player"; // Returns the player.html Thymeleaf template
     }
 

@@ -1,16 +1,12 @@
 package bg.softuni.beroe.service.impl;
 
 import bg.softuni.beroe.model.dto.PlayerDTO;
-import bg.softuni.beroe.service.PlayerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestClient;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestClient.ResponseSpec;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -70,7 +66,7 @@ public class PlayerServiceImplTest {
         when(responseSpec.body(eq(PlayerDTO.class))).thenReturn(mockPlayerDTO);
 
         // When
-        PlayerDTO result = playerService.fetchPayer();
+        PlayerDTO result = playerService.fetchPlayer();
 
         // Then
         assertEquals(mockPlayerDTO, result);

@@ -8,7 +8,9 @@ import java.io.IOException;
 
 public interface PlayerService {
 
-    PlayerDTO fetchPayer();
+    PlayerDTO fetchPlayer();
+
+    void savePlayers() throws FileNotFoundException;
 
     void savePlayerToJson(PlayerDTO playerDTO, String filename) throws IOException;
 
