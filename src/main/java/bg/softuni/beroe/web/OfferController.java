@@ -40,8 +40,8 @@ public class OfferController {
 
   @PostMapping("add")
   public String createOffer(
-     AddOfferDTO addOfferDTO,
-     // @Valid AddOfferDTO addOfferDTO,
+   //  AddOfferDTO addOfferDTO,
+     @Valid AddOfferDTO addOfferDTO,
       BindingResult bindingResult,
       RedirectAttributes rAtt) {
 

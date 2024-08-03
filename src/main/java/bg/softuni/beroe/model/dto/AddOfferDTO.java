@@ -12,14 +12,20 @@ import org.springframework.security.core.userdetails.User;
 public record AddOfferDTO(
     //@NotEmpty
     @Size(message = "Description should be between 5 and 500 symbols.",
-        min = 1,
+        min = 3,
         max = 500) String description,//not necessarily from message source
+
+    @Size(message = "Item should be between 5 and 50 symbols.",
+            min = 5,
+            max = 50)
     String item,
     @NotNull @PositiveOrZero Integer price,
     User user,
 
-    @NotNull FanSizeEnum fanSizeEnum,
-    @NotNull String imageUrl
+    @NotNull
+     FanSizeEnum fanSizeEnum,
+    @NotNull
+    String imageUrl
 
 ) {
 
