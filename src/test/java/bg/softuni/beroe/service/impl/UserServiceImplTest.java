@@ -80,7 +80,7 @@ public class UserServiceImplTest {
                 .thenReturn(userRegistrationDTO.getPassword());
 
 
-        // ACT
+        // ACT  ---> Set above     private UserServiceImpl toTest;--
         toTest.registerUser(userRegistrationDTO);
 
         // Assert

@@ -28,6 +28,8 @@ public class ExRateServiceImplITest {
   @InjectWireMock("exchange-rate-service")
   private WireMockServer wireMockServer;
 
+  //Create HTTP server with a mock.
+
   @Autowired
   private ExRateService exRateService;
 
@@ -41,6 +43,8 @@ public class ExRateServiceImplITest {
 
   @Test
   void testFetchExchangeRates() {
+
+    //Stub or create a mock request with response
     wireMockServer.stubFor(get("/test-currencies").willReturn(
         aResponse()
             .withHeader("Content-Type", "application/json")

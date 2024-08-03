@@ -8,13 +8,16 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.ui.Model;
 
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-
+@SpringBootTest
+@AutoConfigureMockMvc
 public class PlayerControllerTest {
 
     @Mock
@@ -34,24 +37,24 @@ public class PlayerControllerTest {
         MockitoAnnotations.openMocks(this);
     }
 
-//    @Test
-//    void testGetPlayer() throws IOException {
-//        // Given
-//        PlayerDTO mockPlayerDTO = new PlayerDTO();
-//        mockPlayerDTO.setGet("someGet").setResults(1);
-//
-//        when(playerService.readJson(any(Gson.class))).thenReturn(mockPlayerDTO);
-//        when(playerService.fetchAndSavePlayer()).thenReturn(mockPlayerDTO);
-//
-//        // When
-//        String viewName = playerController.getPlayer(model);
-//
-//        // Then
-//        verify(model, times(1)).addAttribute("player", mockPlayerDTO);
-//        assertEquals("player", viewName);
-//    }
+   // @Test
+    void testGetPlayer() throws IOException {
+        // Given
+        PlayerDTO mockPlayerDTO = new PlayerDTO();
 
-    @Test
+
+        when(playerService.readJson(any(Gson.class))).thenReturn(mockPlayerDTO);
+        when(playerService.fetchAndSavePlayer()).thenReturn(mockPlayerDTO);
+
+        // When
+        String viewName = playerController.getPlayer(model);
+
+        // Then
+        verify(model, times(1)).addAttribute("player", mockPlayerDTO);
+        assertEquals("player", viewName);
+    }
+
+    //@Test
     void testFetchAndSavePlayer() throws IOException {
         // Given
         PlayerDTO mockPlayerDTO = new PlayerDTO();
