@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestClient;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 public class RestConfig {
@@ -25,6 +26,19 @@ public class RestConfig {
   @Bean("weatherRestClient")
   public RestClient weatherRestClient() {
     return RestClient.create();
+  }
+
+
+
+  @Bean("AIRestClient")
+  public RestClient AIRestClient() {
+    return RestClient.create();
+
+  }
+
+  @Bean
+  public WebClient AIRestClient1() {
+    return WebClient.create();
   }
 
   @Bean("getPlayers")

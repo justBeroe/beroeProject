@@ -49,5 +49,8 @@ offers:
     baseUrl: "http://localhost:8082"
 server:
   port: 8085
+openai:
+  api:
+    key: "sk-D1U_uXkUR1fSRvoydkaEjRe6Pc7WgUGTO4DOASzzp3T3BlbkFJaVWXhY5UeQhCyWBq4b5oeh84kmvLfnJDQcMdpW-9YA"
 
 
