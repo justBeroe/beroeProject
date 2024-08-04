@@ -3,6 +3,7 @@ package bg.softuni.beroe.model.dto;
 import bg.softuni.beroe.model.entity.UserRoleEntity;
 import bg.softuni.beroe.model.enums.UserRoleEnum;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
@@ -10,16 +11,24 @@ import java.util.List;
 
 public class UserRegistrationDTO {
   @NotEmpty
-  @Size(min = 5, max = 20)
+  @Size(min = 3, max = 20)
   private String firstName;
   @NotEmpty
-  @Size(min = 5, max = 20)
+  @Size(min = 3, max = 20)
   private String lastName;
   @NotEmpty
   private String password;
   @NotEmpty
   //@Email
   private String username;
+
+  // Enum for roles
+
+  //
+  public static UserRegistrationDTO empty() {
+    return new UserRegistrationDTO();
+  }
+  ///
 
 //  private List<UserRoleEntity> roles;
 //
@@ -35,6 +44,7 @@ public class UserRegistrationDTO {
 
 /// Enum test ///
 
+  @NotNull(message = "Role is required")
   private UserRoleEnum role;
 
   public UserRoleEnum getRole() {

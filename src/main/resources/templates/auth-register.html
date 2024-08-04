@@ -26,23 +26,27 @@
             <div class="form-group col-md-6 mb-3">
                 <label th:for="firstName" class="text-white font-weight-bold">First Name</label>
                 <input  th:field="*{firstName}"
+                        th:errorclass="is-invalid"
                         type="text"
                         class="form-control"
-                       placeholder="First name"/>
-<!--                <p class="errors alert alert-danger">-->
-<!--                    First name is required.-->
-<!--                </p>-->
+                       />
+<!--                th:errorclass="!is-invalid"-->
+                <p class="invalid-feedback errors alert alert-danger">
+                    First name is required.
+                </p>
+                <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="invalid-feedback errors alert alert-danger"></p>
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label th:for="lastName" class="text-white font-weight-bold">Last Name</label>
                 <input
                         th:field="*{lastName}"
+                        th:errorclass="is-invalid"
                        type="text"
                        class="form-control"
-                       placeholder="Last name"/>
-<!--                <p class="errors alert alert-danger">-->
-<!--                    Last name is required.-->
-<!--                </p>-->
+                       />
+                <p class="invalid-feedback errors alert alert-danger">
+                    Last name is required.
+                </p>
             </div>
         </div>
         <div class="row">
@@ -50,42 +54,35 @@
                 <label th:for="username" class="text-white font-weight-bold">Username</label>
                 <input
                        th:field="*{username}"
+                       th:errorclass="is-invalid"
                        type="text"
                        class="form-control"
                        />
-<!--                <p class="errors alert alert-danger">-->
-<!--                    Email is required.-->
-<!--                </p>-->
+                <p class="invalid-feedback errors alert alert-danger">
+                    Email is required.
+                </p>
             </div>
             <div class="form-group col-md-6 mb-3">
                 <label th:for="password" class="text-white font-weight-bold">Password</label>
                 <input
                         th:field="*{password}"
+                        th:errorclass="is-invalid"
                        type="password"
                        class="form-control"
-                       placeholder="Password"/>
-<!--                <p class="errors alert alert-danger">-->
-<!--                    Password is required.-->
-<!--                </p>-->
+                       />
+<!--                th:errorclass="is-invalid"-->
+                <p class="invalid-feedback errors alert alert-danger">
+                    Password is required.
+                </p>
             </div>
         </div>
         <div class="form-group col-md-6 mb-3">
-            <label class="text-center text-white font-weight-bold" th:for="allRoles">Role</label>
-            <select th:field="*{role}"
-                    th:errorclass="is-invalid"
-                    class="form-control">
+            <label class="text-center text-white font-weight-bold" th:for="role">Role</label>
+            <select th:field="*{role}" th:errorclass="is-invalid" class="form-control">
                 <option value="">- Select role -</option>
-                <option th:each="type: ${allRoles}"
-                        th:value="${type}"
-                        th:text="${type}">
-                    IMAGINARY ROLE
-                </option>
-
+                <option th:each="type : ${allRoles}" th:value="${type}" th:text="${type}"></option>
             </select>
-
-            <p class="invalid-feedback errors alert alert-danger">
-                Role is required.
-            </p>
+            <p th:if="${#fields.hasErrors('role')}" th:errors="*{role}" class="invalid-feedback errors alert alert-danger"></p>
         </div>
 
         <div class="row">
