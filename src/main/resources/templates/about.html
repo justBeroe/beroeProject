@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>About Beroe Project</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <script src="/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div th:replace="~{fragments/navbar::navbar(activeLink=${'about'})}"></div>
+
+<div class="container mt-5">
+    <h2 class="text-center text-white">About Beroe Project</h2>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h4 class="text-white">Our Mission</h4>
+            <p class="text-white">
+                The Beroe Project is dedicated to supporting and promoting fan items and merchandise. Our goal is to create a vibrant community where fans can buy, sell, and trade their favorite items with ease and trust.
+            </p>
+            <h4 class="text-white">Our Vision</h4>
+            <p class="text-white">
+                We envision a world where fans have access to unique and high-quality merchandise, fostering a sense of community and belonging among enthusiasts from all over the globe.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <div class="embed-responsive embed-responsive-16by9">
+<!--                <iframe class="embed-responsive-item" src="https://youtu.be/F_4-un1xevI?si=-M0XdL6CyCkUv1Yr" allowfullscreen></iframe>-->
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/F_4-un1xevI" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <footer></footer>
+</div>
+
+</body>
+</html>
