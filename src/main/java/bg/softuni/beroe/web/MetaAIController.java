@@ -7,11 +7,13 @@ import bg.softuni.beroe.model.dto.ResponseAIDTO;
 
 import bg.softuni.beroe.service.AIService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-@RestController()
+import java.util.ArrayList;
+
+@Controller
 public class MetaAIController {
 
     private final AIService aiService;
@@ -21,17 +23,47 @@ public class MetaAIController {
     }
 
     @GetMapping("/api/getAI")
-    public ResponseEntity<ChoicesDTO> getAIresponse(
+    public String showMessageForm() {
+        return "ai-message";
+    }
+
+    @PostMapping("/api/getAI")
+    public String getAIresponse(
+            @RequestParam("content") String content, Model model
 //            @RequestParam("from") String from,
 //            @RequestParam("to") String to,
 //            @RequestParam("amount") BigDecimal amount
     ) {
        // Weather1DTO weather1DTO = weatherService.fetchTemp1();
       //  ChoicesDTO choicesDTO = aiService.fetchAIResponse();
-        ChoicesDTO choicesDTO1 = aiService.fetchChoices();
+
+     //   AIDTO requestBody = aiService.setMessageContent(content);
+
+        ChoicesDTO choicesDTO1 = aiService.fetchChoices(content);
 
         System.out.println(choicesDTO1);
 
-        return ResponseEntity.ok(choicesDTO1);
+        // Add response to the model
+        model.addAttribute("content", content);
+        model.addAttribute("response", choicesDTO1);
+
+
+        return "ai-message";
     }
+
+
+
+//    @PostMapping("/api/setMessageContent")
+//    public String setMessageContent(@RequestParam("content") String content, Model model) {
+//        // Call the setMessageContent method with the provided content
+//   //     AIDTO requestBody = aiService.setMessageContent(content);
+//
+//        // Fetch AI response
+//        ChoicesDTO response = aiService.fetchChoices(content);
+//
+//        // Add response to the model
+//        model.addAttribute("response", response);
+//
+//        return "ai-message";
+//    }
 }

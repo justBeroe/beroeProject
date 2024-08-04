@@ -84,13 +84,8 @@ public class AIServiceImpl implements AIService {
         return responseBody;  // Return the response body
     }
 
-
-    // Create a logger instance
-    private static final Logger logger = LoggerFactory.getLogger(AIServiceImpl.class);
-
-    public ChoicesDTO fetchChoices() {
-
-        // Create message list
+    @Override
+    public AIDTO setMessageContent(String message) {
         List<AIDTO.Message> messageList = new ArrayList<>();
 
         // Create system message /not needed/
@@ -102,7 +97,8 @@ public class AIServiceImpl implements AIService {
         // Create user message
         AIDTO.Message userMessage = new AIDTO.Message();
         userMessage.setRole("user");
-        userMessage.setContent("Please repeat only -- SAMO BEROE");
+        //Content message is set in String message below
+        userMessage.setContent(message);
         messageList.add(userMessage);
 
         // Create and set request body
@@ -122,6 +118,19 @@ public class AIServiceImpl implements AIService {
         // Set stop to null (or another value if needed)
         requestBody.setStop(null);
 
+        return requestBody;
+    }
+
+
+    // Create a logger instance
+    private static final Logger logger = LoggerFactory.getLogger(AIServiceImpl.class);
+
+    public ChoicesDTO fetchChoices(String message) {
+
+        AIDTO requestBodyAidto = setMessageContent(message);
+        // Create message list
+
+
         System.out.println();
         // Perform the request and capture the raw response
         Mono<String> rawResponse = webClient
@@ -130,7 +139,7 @@ public class AIServiceImpl implements AIService {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
                 .header("Authorization", "Bearer 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")
-                .bodyValue(requestBody)  // Set the body using bodyValue
+                .bodyValue(requestBodyAidto)  // Set the body using bodyValue
                 .retrieve()
                 .bodyToMono(String.class) // Capture the raw response as a String
                 .doOnNext(response -> System.out.println("Raw Response: " + response)) // Log the raw response

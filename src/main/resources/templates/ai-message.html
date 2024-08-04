@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>AI Message Input</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<h3>BEROE AI</h3>
+<br>
+<form action="#" th:action="@{/api/getAI}" method="post">
+    <div>
+        <label for="content">Please enter AI Message content:</label>
+        <input type="text" id="content" name="content" th:value="${content}" style="width: 300px;"/>
+    </div>
+    <br>
+    <br>
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<div th:if="${response != null}">
+    <h2>AI Response:</h2>
+    <p th:text="${response.choices[0].message.content}"></p>
+</div>
+</body>
+</html>

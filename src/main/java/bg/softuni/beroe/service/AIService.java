@@ -11,5 +11,6 @@ public interface AIService {
 
     ChoicesDTO fetchAIResponse();
 
-    ChoicesDTO fetchChoices();
+    AIDTO setMessageContent(String message);
+    ChoicesDTO fetchChoices(String message);
 }
