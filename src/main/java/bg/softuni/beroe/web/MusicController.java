@@ -13,6 +13,7 @@ public class MusicController {
     private final RestTemplate restTemplate = new RestTemplate();
     private static final String DEEZER_API_URL = "https://api.deezer.com/artist/85/top?limit=10";
 
+    // Test
     @GetMapping("/top10")
     public String showTopSongs(Model model) {
         Map<String, Object> songs = restTemplate.getForObject(DEEZER_API_URL, Map.class);
