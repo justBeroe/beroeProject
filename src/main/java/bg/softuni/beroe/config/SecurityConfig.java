@@ -15,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableWebSecurity
+//@EnableWebSecurity
 public class SecurityConfig {
 
     @Bean
@@ -38,7 +38,8 @@ public class SecurityConfig {
                                                 "/offers/{id}", "/api/convert", "offers/add", "/users/beroe", "/error", "/users/profile",
                                                 "/api/getCity", "/users/config", "/about", "/api/getAI").permitAll()
                                         // all other URL-s should be authenticated.
-                                        .requestMatchers("/api/**", "/users/delete/{id}", "/player/**", "/offers/**", "/generate-text/**").permitAll()
+                                        .requestMatchers("/api/**", "/users/delete/{id}", "/player/**", "/offers/**",
+                                                "/generate-text/**", "/map", "/top10").permitAll()
                                         .anyRequest()
                                         .authenticated()
                 )

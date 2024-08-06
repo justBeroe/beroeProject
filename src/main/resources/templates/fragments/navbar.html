@@ -39,6 +39,12 @@
           <a class="nav-link" href="/about" th:classappend="${activeLink == 'about'}? 'active'" th:text = "#{nav_bar_about}" >About</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="/about" th:classappend="${activeLink == 'location'}? 'active'" th:text = "#{nav_bar_location}" >Location</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/top10" th:classappend="${activeLink == 'top10'}? 'active'" th:text = "#{nav_bar_top10}" >Top 10</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="/api/getAI" th:classappend="${activeLink == 'ai'}? 'active'" th:text = "#{nav_bar_ai}" >Custom AI</a>
         </li>
         <li class="nav-item">

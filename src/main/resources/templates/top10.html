@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Songs</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <script src="/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        audio {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{fragments/navbar::navbar(activeLink=${'top10'})}"></div>
+<br>
+<br>
+<br>
+<h1>Top 10 Songs</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Rank</th>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Album</th>
+        <th>Preview</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="track, stat : ${songs}">
+        <td th:text="${stat.index + 1}">1</td>
+        <td th:text="${track.title}">Title</td>
+        <td th:text="${track.artist.name}">Artist</td>
+        <td th:text="${track.album.title}">Album</td>
+        <td>
+            <audio controls th:src="${track.preview}">Your browser does not support the audio element.</audio>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

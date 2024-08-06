@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BEROE stadium location</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <script src="/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{fragments/navbar::navbar(activeLink=${'location'})}"></div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>BEROE stadion location</h1>
+<p>This page shows the location with coordinates 42.45788988262932, 25.619327472645953 on the map.</p>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    function initMap() {
+        const coordinates = [42.45788988262932, 25.619327472645953];
+
+        // Initialize the map centered at the given coordinates
+        const map = L.map('map').setView(coordinates, 14);
+
+        // Set up the OpenStreetMap layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© BEROE contributors'
+        }).addTo(map);
+
+        // Add a marker at the specified location
+        L.marker(coordinates).addTo(map)
+            .bindPopup('Location')
+            .openPopup();
+    }
+
+    // Initialize the map when the window loads
+    window.onload = initMap;
+</script>
+
+</body>
+</html>
