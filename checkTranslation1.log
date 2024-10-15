@@ -1,0 +1,166 @@
+[2024-09-04 13:48:35.160 DEBUG 1494]
+The cygpath command was not found, so touchless configuration will not create cygwin compiler wrappers. If this is a mistake, please install cygpath from cygwin.
+[2024-09-04 13:48:44.861 WARN  12003]
+Assuming Java source level to be 11 as it was not specified. Note that the default value may change in future versions.
+[2024-09-04 13:48:44.910 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\BeroeApplication.java
+[2024-09-04 13:48:45.713 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\config\AppConfig.java
+[2024-09-04 13:48:45.777 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\config\ForexApiConfig.java
+[2024-09-04 13:48:45.855 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\config\GsonConfig.java
+[2024-09-04 13:48:45.910 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\config\I18NConfig.java
+[2024-09-04 13:48:45.968 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\config\ObfuscationLoginFilter.java
+[2024-09-04 13:48:46.037 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\config\OfferApiConfig.java
+[2024-09-04 13:48:46.074 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\config\RestConfig.java
+[2024-09-04 13:48:46.127 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\config\SchedulerConfig.java
+[2024-09-04 13:48:46.235 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\config\SecurityConfig.java
+[2024-09-04 13:48:46.402 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\config\TestConfig.java
+[2024-09-04 13:48:46.455 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\config\WebConfig.java
+[2024-09-04 13:48:46.501 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\init\ExchangeRateInitializer.java
+[2024-09-04 13:48:46.554 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\AIDTO.java
+[2024-09-04 13:48:46.599 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\AddOfferDTO.java
+[2024-09-04 13:48:46.656 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\ChoicesDTO.java
+[2024-09-04 13:48:46.695 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\ConversionResultDTO.java
+[2024-09-04 13:48:46.728 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\CronDTO.java
+[2024-09-04 13:48:46.755 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\ExRatesDTO.java
+[2024-09-04 13:48:46.790 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\FanDetailsDTO.java
+[2024-09-04 13:48:46.824 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\FanSummaryDTO.java
+[2024-09-04 13:48:46.855 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\LocationDTO.java
+[2024-09-04 13:48:46.886 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\PlayerDTO.java
+[2024-09-04 13:48:46.962 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\ResponseAIDTO.java
+[2024-09-04 13:48:47.008 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\SearchFanItemsByIdDTO.java
+[2024-09-04 13:48:47.042 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\UserLoginDTO.java
+[2024-09-04 13:48:47.076 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\UserProfileDto.java
+[2024-09-04 13:48:47.110 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\UserRegistrationDTO.java
+[2024-09-04 13:48:47.170 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\Weather1DTO.java
+[2024-09-04 13:48:47.214 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\dto\WeatherDTO.java
+[2024-09-04 13:48:47.248 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\entity\BaseEntity.java
+[2024-09-04 13:48:47.295 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\entity\ExRateEntity.java
+[2024-09-04 13:48:47.331 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\entity\FanEntity.java
+[2024-09-04 13:48:47.378 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\entity\PlayerEntity.java
+[2024-09-04 13:48:47.417 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\entity\UserEntity.java
+[2024-09-04 13:48:47.476 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\entity\UserRoleEntity.java
+[2024-09-04 13:48:47.510 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\enums\FanSizeEnum.java
+[2024-09-04 13:48:47.536 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\enums\UserRoleEnum.java
+[2024-09-04 13:48:47.561 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\model\user\BeroeUserDetails.java
+[2024-09-04 13:48:47.597 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\repository\ExRateRepository.java
+[2024-09-04 13:48:47.644 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\repository\FanRepository.java
+[2024-09-04 13:48:47.696 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\repository\PlayerRepository.java
+[2024-09-04 13:48:47.737 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\repository\UserRepository.java
+[2024-09-04 13:48:47.797 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\repository\UserRoleRepository.java
+[2024-09-04 13:48:47.855 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\scheduling\CronScheduler.java
+[2024-09-04 13:48:47.907 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\AIService.java
+[2024-09-04 13:48:47.949 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\ExRateService.java
+[2024-09-04 13:48:47.990 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\FanService.java
+[2024-09-04 13:48:48.035 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\PlayerService.java
+[2024-09-04 13:48:48.078 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\UserHelperService.java
+[2024-09-04 13:48:48.150 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\UserService.java
+[2024-09-04 13:48:48.201 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\WeatherService.java
+[2024-09-04 13:48:48.243 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\exception\ApiObjectNotFoundException.java
+[2024-09-04 13:48:48.279 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\exception\CustomException.java
+[2024-09-04 13:48:48.313 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\exception\NoSuchElementException.java
+[2024-09-04 13:48:48.352 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\exception\ObjectNotFoundException.java
+[2024-09-04 13:48:48.385 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\impl\AIServiceImpl.java
+[2024-09-04 13:48:48.518 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\impl\BeroeUserDetailsService.java
+[2024-09-04 13:48:48.589 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\impl\ExRateServiceImpl.java
+[2024-09-04 13:48:48.682 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\impl\FanServiceImpl.java
+[2024-09-04 13:48:48.832 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\impl\PlayerServiceImpl.java
+[2024-09-04 13:48:48.975 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\impl\UserServiceImpl.java
+[2024-09-04 13:48:49.051 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\impl\UserServiceImplBACKUP.java
+[2024-09-04 13:48:49.086 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\service\impl\WeatherServiceImpl.java
+[2024-09-04 13:48:49.156 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\util\Calculator.java
+[2024-09-04 13:48:49.185 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\web\CurrencyController.java
+[2024-09-04 13:48:49.238 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\web\CustomErrorController.java
+[2024-09-04 13:48:49.278 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\web\GlobalExceptionHandler.java
+[2024-09-04 13:48:49.329 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\web\HomeController.java
+[2024-09-04 13:48:49.378 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\web\LoginController.java
+[2024-09-04 13:48:49.421 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\web\MapController.java
+[2024-09-04 13:48:49.466 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\web\MetaAIController.java
+[2024-09-04 13:48:49.515 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\web\MusicController.java
+[2024-09-04 13:48:49.568 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\web\OfferController.java
+[2024-09-04 13:48:49.639 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\web\OffersController.java
+[2024-09-04 13:48:49.715 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\web\OpenAIController.java
+[2024-09-04 13:48:49.752 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\web\PagesController.java
+[2024-09-04 13:48:49.789 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\web\PlayerController.java
+[2024-09-04 13:48:49.841 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\web\RegistrationController.java
+[2024-09-04 13:48:49.916 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\web\UserController.java
+[2024-09-04 13:48:49.994 INFO  1450]
+Processing C:\Users\up636306\Desktop\PythonSoftUni\Spring Advanced\FinalProject\src\main\java\bg\softuni\beroe\web\WeatherRESTController.java
