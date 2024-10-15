@@ -30,13 +30,14 @@ public class PlayerServiceImpl implements PlayerService {
     private final RestClient restClient;
     private final ObjectMapper objectMapper;
 
-    @Autowired
+   // @Autowired
     private PlayerRepository playerRepository;
 
-    public PlayerServiceImpl(@Qualifier("getPlayers") RestClient restClient, ObjectMapper objectMapper) {
+    public PlayerServiceImpl(@Qualifier("getPlayers") RestClient restClient, ObjectMapper objectMapper, PlayerRepository playerRepository) {
         this.restClient = restClient;
         this.objectMapper = objectMapper;
 
+        this.playerRepository = playerRepository;
     }
 
     @Override
